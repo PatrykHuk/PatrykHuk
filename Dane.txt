@@ -1,0 +1,4 @@
+Istnieja podtablice, ktorych suma wynosi 0.
+Tablice te to:
+[ 2, 5, -5, -4, 2 ]
+[ 5, -5 ]
