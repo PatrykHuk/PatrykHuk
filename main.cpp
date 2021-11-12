@@ -1,7 +1,25 @@
+/*
+Zadanie 2.
+Dla zadanej tablicy liczb całkowitych, wypisz wszystkie podtablice, których suma wynosi 0.
+
+Przykład.
+Wejście: [3, 4, -7, 3, 1, 3, 1, -4, -2, -2]
+    Wyjście:
+    Istnieją podtablice, których suma wynosi 0.
+    Tablice te to:
+    [3,4,-7]
+    [4,-7,3]
+    [-7,3,1,3]
+    [3,1,-4]
+    [3,1,3,1,-4,-2,-2]
+    [3,4,-7,3,1,3,1,-4,-2,-2]
+*/
 #include <iostream>
 #include <fstream>
 #include <ctime>
 #include <cstdlib>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -12,7 +30,7 @@ void wypisz(int T[],int p,int q){
         cout << T[i]<< ", ";
     cout << T[q]<<" ]"<<endl;
 
-}                                   //funkcja wypisująca podtablice, których suma wynosi 0
+}  //funkcja wypisująca podtablice, których suma wynosi 0
 
 void zapisz(int T[],int p,int q,fstream &plik){
     plik<<"[ ";
@@ -20,7 +38,7 @@ void zapisz(int T[],int p,int q,fstream &plik){
         plik << T[i]<< ", ";
     plik << T[q]<<" ]"<<endl;
 
-}                                   //funkcja zapisujaca podtablice [T[p],T[p+1]....T[q]] do pliku
+}  //funkcja zapisujaca podtablice [T[p],T[p+1]....T[q]] do pliku
 
 bool czy_sie_powtarza(int T[],int poczatek,int koniec){
     int n=koniec-poczatek+1;        //długość podtablicy
@@ -32,7 +50,7 @@ bool czy_sie_powtarza(int T[],int poczatek,int koniec){
             return true;
     }
     return false;
-}                               //funkcja sprawdzająca, czy dana podtablica wystąpiła więcej niż jeden raz
+}   //funkcja sprawdzająca, czy dana podtablica wystąpiła więcej niż jeden raz
 
 void szukaj(int T[],int n, fstream &plik)
 {
@@ -64,19 +82,20 @@ void szukaj(int T[],int n, fstream &plik)
         cout<<"Brak podtablic, ktorych suma wynosi 0.";
         plik<<"Brak podtablic, ktorych suma wynosi 0.";
     }
-}                               //funkcja znajdujaca podtablice, ktorych suma wyrazow to 0
+}   //funkcja znajdujaca podtablice, ktorych suma wyrazow to 0
 void test(int n, int wmin, int wmax, fstream &plik)
 {
     srand(time(NULL));
     int T[n];
     for(int i=0;i<n;i++)
         T[i]=rand()%(wmax-wmin+1)+wmin;
+    cout<<"    #### TEST ####\n";
     cout<<"Wygenerowana podtablica to: \n";
     wypisz(T,0,n-1);
     szukaj(T,n,plik);
-    cout<<endl;
+    cout<<"    #### TEST ####\n\n";
 
-}                               //funkcja generujaca losowo tablice T[n] i testujaca funkcje szukaj
+}   //funkcja generujaca losowo tablice T[n], sluzy do wykonywania testow na duzych danych
 
 int main()
 {
@@ -103,17 +122,40 @@ int main()
         case 2:
             {
             cout<<"Ile tablica ma miec znakow? ";
-            cin>>n;
+            string tmp;
+            stringstream ss;
+            cin>>tmp;
+            ss<<tmp;
+            if(!(ss>>n))
+            {
+                cout<<"Podano niewlasciwy typ danych"<<endl;
+                plik.close();
+                return 1;
+
+            }
+            ss.clear();
             T=new int[n];
             for(int i=0; i<n; i++)
             {
+                int a; //zmienna pomocnicza
                 cout<<"Podaj "<<i+1<<" liczbe: ";
-                cin>>T[i];
+                cin>>tmp;
+                ss<<tmp;
+                if(!(ss>>a))
+                {
+                    cout<<"Podano niewlasciwy typ danych"<<endl;
+                    plik.close();
+                    return 1;
+                }
+                 T[i]=a;
+                ss.clear();
             }
             break;
             }
         default:
             cout<<"Blad!";
+            plik.close();
+            return 404;
     }
     cout<<"Zadana tablica: ";
     plik<<"Zadana tablica: ";

@@ -1,7 +1,9 @@
 # depslib dependency file v1.0
-1636663088 source:c:\users\patryk\desktop\codeblocks\projekt - algorytmy i struktury danych_ph\main.cpp
+1636738403 source:c:\users\patryk\desktop\codeblocks\projekt - algorytmy i struktury danych_ph\main.cpp
 	<iostream>
 	<fstream>
 	<ctime>
 	<cstdlib>
+	<string>
+	<sstream>
 
