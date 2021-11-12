@@ -1,9 +1,14 @@
 Istnieja podtablice, ktorych suma wynosi 0.
 Tablice te to:
-[ -2, -3, 0, 5 ]
 [ 0 ]
-[ 3, -3 ]
-Zadana tablica: [ 1, 2, -3 ]
+[ 0, 0 ]
+[ -1, -1, 2 ]
+Zadana tablica: [ 3, 4, -7, 3, 1, 3, 1, -4, -2, -2 ]
 Istnieja podtablice, ktorych suma wynosi 0.
 Tablice te to:
-[ 1, 2, -3 ]
+[ 3, 4, -7 ]
+[ 3, 4, -7, 3, 1, 3, 1, -4, -2, -2 ]
+[ 4, -7, 3 ]
+[ -7, 3, 1, 3 ]
+[ 3, 1, 3, 1, -4, -2, -2 ]
+[ 3, 1, -4 ]

@@ -24,7 +24,8 @@ Wejście: [3, 4, -7, 3, 1, 3, 1, -4, -2, -2]
 using namespace std;
 
 
-void wypisz(int T[],int p,int q){
+void wypisz(int T[],int p,int q)
+{
     cout<<"[ ";
     for(int i=p;i<=q-1;i++)
         cout << T[i]<< ", ";
@@ -32,7 +33,8 @@ void wypisz(int T[],int p,int q){
 
 }  //funkcja wypisująca podtablice, których suma wynosi 0
 
-void zapisz(int T[],int p,int q,fstream &plik){
+void zapisz(int T[],int p,int q,fstream &plik)
+{
     plik<<"[ ";
     for(int i=p;i<=q-1;i++)
         plik << T[i]<< ", ";
@@ -40,7 +42,8 @@ void zapisz(int T[],int p,int q,fstream &plik){
 
 }  //funkcja zapisujaca podtablice [T[p],T[p+1]....T[q]] do pliku
 
-bool czy_sie_powtarza(int T[],int poczatek,int koniec){
+bool czy_sie_powtarza(int T[],int poczatek,int koniec)
+{
     int n=koniec-poczatek+1;        //długość podtablicy
     for(int i=0;i<poczatek;i++){    //sprawdzamy, czy podtablica o długości n zaczynająca się w T[i] jest taka sama jak tablica o długości n zaczynająca się w T[poczatek]
             int j=0;
@@ -122,11 +125,11 @@ int main()
         case 2:
             {
             cout<<"Ile tablica ma miec znakow? ";
-            string tmp;
-            stringstream ss;
-            cin>>tmp;
-            ss<<tmp;
-            if(!(ss>>n))
+            string tmp;                         //zabezpieczenie przed
+            stringstream ss;                    //wprowadzeniem
+            cin>>tmp;                           //nieprawidłowych
+            ss<<tmp;                            //danych
+            if(!(ss>>n))                        //mogą być tylko "int"
             {
                 cout<<"Podano niewlasciwy typ danych"<<endl;
                 plik.close();
